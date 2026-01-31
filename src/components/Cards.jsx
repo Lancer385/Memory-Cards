@@ -1,10 +1,17 @@
 import { fetchImages } from "../modules/fetchImages"
 import { useState, useEffect} from "react"
 import Card from "./Card";
+import ScoreBoard from "./ScoreBoard";
 
 function Cards(){
     const [data, setData] = useState([]);
     const [isFinished, setFetchStatus] = useState(false)
+    const [score, setScore] = useState(0)
+    const [clickedCards, addClickedCard] = useState([]);
+
+    const handleScore = (newScore) => {
+        setScore(newScore)
+    }
     function handleShuffle(){
         setData(prev => shuffle(prev));
     }
@@ -21,12 +28,17 @@ function Cards(){
     getImages();
     return () => {
         isMounted = false;
-    }
+    } 
 }, []);
 
     if (!isFinished){
         return (
-        <><h1>STAND BY...</h1></>
+        <>
+            <ScoreBoard 
+            score={score} 
+            />
+            <h1>STAND BY...</h1>
+        </>
         )
     }
     else {
@@ -34,12 +46,20 @@ function Cards(){
 
     return (
         <>
+            <ScoreBoard 
+                score={score}
+            />
             {data.map(value => (
                 <Card 
                     key = {value.id}
                     url = {value.url}
+                    id = {value.id}
                     name = {value.breeds[0].name}
                     handleShuffle={handleShuffle}
+                    clickedCards={clickedCards}
+                    addClickedCard={addClickedCard}
+                    score={score}
+                    handleScore={handleScore}
                 />
             ))} 
         </>

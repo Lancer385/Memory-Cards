@@ -1,16 +1,32 @@
-function Card({name, url}){
-    console.log(name)
+function Card({name,
+               url, 
+               id, 
+               clickedCards,
+               addClickedCard,
+               handleShuffle, 
+               score, handleScore
+            }){
+    function handleScoring(){
+        if (!clickedCards.includes(id)){
+            addClickedCard([...clickedCards, id])
+            score = score + 1
+            handleScore(score)
+        }
+        else {
+            addClickedCard([])
+            handleScore(0)
+        }
+        handleShuffle();
+    }
     return (
         <>
-            <div className="card">
+            <button className="card" onClick={handleScoring}>
                 <img 
                     src={url}
                     alt={name}
-                    width='50px'
-                    height='50px'
                     />
                 <p>{name}</p>
-            </div>
+            </button>
         </>
     )
 }
