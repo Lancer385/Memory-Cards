@@ -1,4 +1,5 @@
 import { fetchImages } from "../modules/fetchImages"
+import shuffle from "../modules/shuffle";
 import { useState, useEffect} from "react"
 import Card from "./Card";
 import ScoreBoard from "./ScoreBoard";
@@ -67,16 +68,5 @@ function Cards(){
     }
 }
 
-function shuffle(arr){
-    let newArr = [...arr]
-    let curr = newArr.length;
 
-    while (curr !== 0){
-        let random = Math.floor(Math.random() * curr)
-        curr = curr - 1;
-
-        [newArr[curr], newArr[random]] = [newArr[random], newArr[curr]];
-    }
-    return newArr;
-}
 export default Cards
