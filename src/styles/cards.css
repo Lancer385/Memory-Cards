@@ -5,18 +5,18 @@ img {
 }
 
 .cards {
-    display: grid;
-    justify-content: space-between;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: grid;
+  justify-content: space-between;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card {
-    height: 300px;
-    cursor: pointer;
-    padding: 20px;
+  height: 300px;
+  cursor: pointer;
+  padding: 20px;
 }
 
 .card p {
-    font-size: large;
+  font-size: large;
 }
