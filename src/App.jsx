@@ -3,7 +3,7 @@ import shuffle from "./modules/shuffle";
 import { useState, useEffect} from "react"
 import Card from "./components/Card";
 import ScoreBoard from "./components/ScoreBoard";
-
+import "./styles/cards.css"
 function App(){
     const [data, setData] = useState([]);
     const [isFinished, setFetchStatus] = useState(false)
@@ -50,6 +50,7 @@ function App(){
             <ScoreBoard 
                 score={score}
             />
+            <div className="cards">
             {data.map(value => (
                 <Card 
                     key = {value.id}
@@ -63,6 +64,7 @@ function App(){
                     handleScore={handleScore}
                 />
             ))} 
+            </div>
         </>
     )
     }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/scoreBoard.css"
 
 function ScoreBoard({score}){
     const [bestScore, setBestScore] = useState(0)
@@ -7,9 +8,8 @@ function ScoreBoard({score}){
         setBestScore(score)
     }
     return (
-        <div>
-            <h2>Score: {score}</h2>
-            <h2>Best: {bestScore}</h2>
+        <div className="score">
+            <h2>Score: {score} - Best: {bestScore}</h2>
         </div>
     )
 }
